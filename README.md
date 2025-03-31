@@ -1,113 +1,86 @@
-# 💌 HunnyGram - A Private Couple Chat App
+# HunnyGram 💌
 
-HunnyGram is a real-time private messaging web app built just for you and your special someone. It supports only two users, and includes profile customization, seen indicators, typing status, and image sharing.
+A private chat app built for couples to share special moments.
 
-## ✨ Features
+## Features
 
-### 🔐 Authentication
-- Secure login & registration (2 users only)
-- JWT authentication
-- Change password
+- **Private Messaging**: Just for the two of you
+- **Media Sharing**: Send images and videos
+- **Typing Indicators**: See when your partner is typing
+- **Read Receipts**: Know when your messages have been seen
+- **Message Deletion**: Delete messages for yourself or both
+- **Mobile Responsive**: Use on any device
+- **Dark Mode**: Chat comfortably day or night
+- **Custom Profiles**: Set profile pictures and bios
 
-### 💬 Chat System
-- Real-time messaging (Socket.IO)
-- Typing indicator
-- Seen/Read indicator
-- Text & image messages
-- Emoji support
-- Auto scroll to latest message
+## Tech Stack
 
-### 🖼 Profile Page
-- Upload profile picture
-- Add profile description/love note
-- Display name shown in chat
+- **Frontend**: React with TypeScript, Tailwind CSS
+- **Backend**: Node.js, Express
+- **Database**: MongoDB
+- **Real-time**: Socket.IO
+- **Media Storage**: Cloudinary
 
-### 🌗 UI/UX
-- Light & Dark mode toggle
-- Mobile + desktop responsive
-- Modern design using Tailwind CSS
+## Structure
 
-## ⚙️ Tech Stack
-- **Frontend**: React + Tailwind CSS + TypeScript
-- **Backend**: Node.js + Express + Socket.IO
-- **Database**: MongoDB Atlas (with in-memory fallback for development)
-- **Hosting**: Vercel (frontend) + Render (backend)
-- **Image Hosting**: Cloudinary (Free tier)
+- `/client` - React frontend application
+- `/server` - Node.js backend API and socket server
+- `DEPLOYMENT.md` - Guide for deploying to Vercel and Render
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
-- Node.js & npm installed
+
+- Node.js and npm
+- MongoDB (local or Atlas)
+- Cloudinary account (optional, for production)
 
 ### Installation
-Install all dependencies with one command:
+
+1. Clone the repository
+
 ```bash
-npm run install-all
+git clone https://github.com/yourusername/hunnygram.git
+cd hunnygram
 ```
 
-This will install dependencies for the root project, server, and client.
+2. Install backend dependencies
 
-### Running the App
-Start both the frontend and backend in development mode:
 ```bash
-npm run dev
+cd server
+npm install
 ```
 
-This will launch:
-- Frontend at http://localhost:3000
-- Backend at http://localhost:5000
+3. Set up environment variables
+Create a `.env` file in the server directory with:
 
-### Development Notes
-- The application uses an in-memory MongoDB database in development mode
-- Data will not persist between server restarts in development
-- For production, update the MongoDB URI in the `.env` file with your MongoDB Atlas connection string
-- The app is limited to 2 users only (one couple)
-
-### Using the App
-1. Register the first user (this will be you)
-2. Register the second user (your partner)
-3. The app will automatically link both accounts
-4. Start chatting in real-time!
-
-> **Note**: If you encounter a "No partner found" error, you may need to manually link your accounts.
-> 
-> **Manually Linking Accounts**:
-> 1. Register both user accounts
-> 2. Use the `/api/auth/link-partner` endpoint with a POST request:
->    ```json
->    {
->      "partnerUsername": "username_of_your_partner"
->    }
->    ```
-> 3. Make sure to include your JWT authorization token in the request headers
-> 4. After linking, both users will be able to chat with each other
-
-## 📝 Environment Variables
-For production, update the following in `server/.env`:
 ```
 PORT=5000
-MONGO_URI=your_mongodb_atlas_connection_string
-JWT_SECRET=your_secure_jwt_secret
-CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-CLIENT_URL=http://localhost:3000 (or your production URL)
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
 ```
 
-## 🌐 Deployment
+4. Install frontend dependencies
 
-### Frontend (Vercel)
-1. Connect your GitHub repository to Vercel
-2. Set the root directory to `client`
-3. Set the build command to `npm run build`
-4. Add required environment variables
+```bash
+cd ../client
+npm install
+```
 
-### Backend (Render)
-1. Connect your GitHub repository to Render
-2. Set the root directory to `server`
-3. Set the build command to `npm install`
-4. Set the start command to `npm start`
-5. Add required environment variables
+5. Run the application
 
-## 💕 Made with Love
-HunnyGram is designed to be a private space for couples to connect and share special moments.
+```bash
+# Start backend (from server directory)
+npm run start
+
+# In another terminal, start frontend (from client directory)
+npm run start
+```
+
+## Deployment
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions on deploying this app to Vercel and Render.
+
+---
+
+Made with 💖 for your special someone.
