@@ -254,14 +254,6 @@ const { io: socketInstance, userSockets } = require('./sockets/chat')(io); // Ge
 app.set('socketio', socketInstance);
 app.set('userSockets', userSockets);
 
-// Serve static files in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-  });
-}
-
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
