@@ -1,4 +1,4 @@
-nrequire('dotenv').config();
+require('dotenv').config();
 
 // Ensure we're in development mode when running locally
 if (!process.env.NODE_ENV) {
